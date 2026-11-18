@@ -1,5 +1,6 @@
 from subalgoritmos import solicitar_local
 from integracoes import buscar_local_api, calcular_trajeto_api
+from favoritos import perguntar_favorito, salvar_favorito
 
 def consultar_trajetos():
     print("\n===== CONSULTAR TRAJETOS =====")
@@ -41,6 +42,9 @@ Destino: {destino}
 
             trajeto_escolhido = escolher_trajeto(trajetos)
             exibir_trajeto(trajeto_escolhido, destino)
+
+            if perguntar_favorito():
+                salvar_favorito(origem, destino, trajeto_escolhido)
 
 def escolher_trajeto(trajetos: list) -> dict:
     numero = 1

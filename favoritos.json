@@ -1,0 +1,45 @@
+[
+    {
+        "Casa da v\u00f3": {
+            "origem": "Esta\u00e7\u00e3o Ribeir\u00e3o Pires",
+            "destino": "Rua \u00c2ngela Zampol",
+            "caminho": [
+                {
+                    "transporte": "Caminhada",
+                    "distancia": 185.0,
+                    "destino": "Avenida Santo Andr\u00e9, 251-289 - Centro Alto, Ribeir\u00e3o Pires - SP, 09424-020, Brasil"
+                },
+                {
+                    "transporte": "Caminhada",
+                    "distancia": 450.0,
+                    "destino": "Rua \u00c2ngela Zampol"
+                }
+            ]
+        }
+    },
+    {
+        "Escola": {
+            "origem": "Esta\u00e7\u00e3o Ribeir\u00e3o Pires",
+            "destino": "SENAI Jairo C\u00e2ndido",
+            "caminho": [
+                {
+                    "transporte": "Caminhada",
+                    "distancia": 142.0,
+                    "destino": "Ribeir\u00e3o Pires"
+                },
+                {
+                    "transporte": "Trem",
+                    "linha": "CPTM L10",
+                    "embarque": "Ribeir\u00e3o Pires",
+                    "desembarque": "Mau\u00e1",
+                    "sentido": "BARRA FUNDA"
+                },
+                {
+                    "transporte": "Caminhada",
+                    "distancia": 862.0,
+                    "destino": "SENAI Jairo C\u00e2ndido"
+                }
+            ]
+        }
+    }
+]

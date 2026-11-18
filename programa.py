@@ -3,6 +3,7 @@ os.system("cls")
 
 import subalgoritmos as sub
 import trajetos
+import favoritos
 
 while True:
     try:
@@ -30,7 +31,8 @@ while True:
 
                         case 2:
                             # Trajetos favoritos
-                            pass
+                            favoritos.exibir_favoritos()
+                            sub.continuar()
 
                 except ValueError:
                     sub.valueerror()
@@ -49,6 +51,7 @@ while True:
     except ValueError:
         sub.valueerror()
         sub.continuar()
+
     except:
         sub.except_geral()
         sub.continuar()
