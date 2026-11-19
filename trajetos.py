@@ -42,27 +42,44 @@ Destino: {destino}
             print("\nConsulta realizada!\n")
 
             trajeto_escolhido = escolher_trajeto(trajetos)
+
+            if trajeto_escolhido is None:
+                return
+                
             exibir_trajeto(trajeto_escolhido, destino)
 
             if perguntar_favorito():
                 salvar_favorito(origem, destino, trajeto_escolhido)
 
 
-def escolher_trajeto(trajetos: list) -> dict:
+def escolher_trajeto(trajetos: dict) -> dict | None:
+    opcoes = trajetos.get("itineraries", [])
+
+    if not opcoes:
+        print("Nenhum trajeto disponível.")
+        return None
+
     numero = 1
 
-    for trajeto in trajetos["itineraries"]:
+    for trajeto in opcoes:
         duracao = trajeto["duration"]
         horas = duracao // 3600
         minutos = (duracao % 3600) // 60
-        print(f"""{numero} - Duração: {horas}h {minutos}min | Baldeações: {trajeto["transfers"]}""")
 
-        numero = numero + 1
+        print(
+            f"{numero} - Duração: {horas}h {minutos}min "
+            f"| Baldeações: {trajeto['transfers']}"
+        )
 
-    trajeto_escolhido = int(input("Escolha um trajeto: "))
-    indice = trajeto_escolhido - 1
-    return trajetos["itineraries"][indice]
+        numero += 1
 
+    while True:
+        escolha = int(input("Escolha um trajeto: "))
+
+        if 1 <= escolha <= len(opcoes):
+            return opcoes[escolha - 1]
+
+        print("Escolha uma opção válida.")
 
 def exibir_trajeto(trajeto: dict, destino: str) -> None:
     print("\n======== PASSO A PASSO ========")

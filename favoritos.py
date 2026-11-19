@@ -3,7 +3,7 @@ import json
 
 def perguntar_favorito() -> bool | None:
     while True:
-        favorito = input("\nDeseja favoritar trajeto? (S / N)")
+        favorito = input("\nDeseja favoritar trajeto? (S / N): ")
 
         match favorito:
             case "S" | "s":
