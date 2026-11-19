@@ -1,5 +1,6 @@
 import json
 
+
 def perguntar_favorito() -> bool | None:
     while True:
         favorito = input("\nDeseja favoritar trajeto? (S / N)")
@@ -11,6 +12,7 @@ def perguntar_favorito() -> bool | None:
                 return False
             case _:
                 print("Valor inválido!")
+
 
 def salvar_favorito(origem: str, destino: str, trajeto_escolhido: dict) -> None:
     nome = input("\nNome do trajeto: ")
@@ -40,7 +42,7 @@ def salvar_favorito(origem: str, destino: str, trajeto_escolhido: dict) -> None:
 
             if local == "END":
                 local = destino
-                
+
             trecho = {
                 "transporte": "Caminhada",
                 "distancia": etapa["distance"],
@@ -67,10 +69,11 @@ def salvar_favorito(origem: str, destino: str, trajeto_escolhido: dict) -> None:
     with open("favoritos.json", "w", encoding="utf-8") as arquivo:
         json.dump(trajetos_fav, arquivo, indent=4)
 
+
 def exibir_favoritos() -> None:
     with open("favoritos.json", "r", encoding="utf-8") as arquivo:
         favoritos = json.load(arquivo)
-    
+
     print("\nFAVORITADOS")
     print(50 * "-")
     for favorito in favoritos:
@@ -99,4 +102,3 @@ def exibir_favoritos() -> None:
 
                 numero = numero + 1
             print(50 * "-")
-

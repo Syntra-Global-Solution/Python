@@ -2,6 +2,7 @@ from subalgoritmos import solicitar_local
 from integracoes import buscar_local_api, calcular_trajeto_api
 from favoritos import perguntar_favorito, salvar_favorito
 
+
 def consultar_trajetos():
     print("\n===== CONSULTAR TRAJETOS =====")
 
@@ -46,6 +47,7 @@ Destino: {destino}
             if perguntar_favorito():
                 salvar_favorito(origem, destino, trajeto_escolhido)
 
+
 def escolher_trajeto(trajetos: list) -> dict:
     numero = 1
 
@@ -54,12 +56,13 @@ def escolher_trajeto(trajetos: list) -> dict:
         horas = duracao // 3600
         minutos = (duracao % 3600) // 60
         print(f"""{numero} - Duração: {horas}h {minutos}min | Baldeações: {trajeto["transfers"]}""")
-        
+
         numero = numero + 1
 
     trajeto_escolhido = int(input("Escolha um trajeto: "))
     indice = trajeto_escolhido - 1
     return trajetos["itineraries"][indice]
+
 
 def exibir_trajeto(trajeto: dict, destino: str) -> None:
     print("\n======== PASSO A PASSO ========")

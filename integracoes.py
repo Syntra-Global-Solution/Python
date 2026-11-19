@@ -46,45 +46,47 @@ def buscar_local_api(local: str) -> list[dict] | None:
         print("Erro ao interpretar a resposta da API.")
         return None
 
+
 def calcular_trajeto_api(origem: dict, destino: dict) -> dict | None:
-        parametros = urlencode({
-            "fromPlace": f"{origem['lat']},{origem['lon']}",
-            "toPlace":f"{destino['lat']},{destino['lon']}"
-        })
+    parametros = urlencode({
+        "fromPlace": f"{origem['lat']},{origem['lon']}",
+        "toPlace":f"{destino['lat']},{destino['lon']}"
+    })
 
-        url = (
-            "https://api.transitous.org/api/v6/plan?"
-            + parametros
-        )
+    url = (
+        "https://api.transitous.org/api/v6/plan?"
+        + parametros
+    )
 
-        requisicao = Request(
-            url,
-            headers ={
-                "User-Agent": "Syntra-FIAP/1.0 (contato: glabradadev@gmail.com)"
-            }
-        )
+    requisicao = Request(
+        url,
+        headers ={
+            "User-Agent": "Syntra-FIAP/1.0 (contato: glabradadev@gmail.com)"
+        }
+    )
 
-        try:
-            with urlopen(requisicao, timeout=20) as resposta:
-                trajetos = json.load(resposta)
+    try:
+        with urlopen(requisicao, timeout=20) as resposta:
+            trajetos = json.load(resposta)
 
-            return trajetos
+        return trajetos
 
-        except HTTPError as erro:
-            print("Erro HTTP:", erro.code)
-            return None
+    except HTTPError as erro:
+        print("Erro HTTP:", erro.code)
+        return None
 
-        except URLError as erro:
-            print("Erro de conexão:", erro.reason)
-            return None
+    except URLError as erro:
+        print("Erro de conexão:", erro.reason)
+        return None
 
-        except TimeoutError:
-            print("A conexão demorou muito.")
-            return None
+    except TimeoutError:
+        print("A conexão demorou muito.")
+        return None
 
-        except json.JSONDecodeError:
-            print("Erro ao interpretar a resposta da API.")
-            return None
+    except json.JSONDecodeError:
+        print("Erro ao interpretar a resposta da API.")
+        return None
+
 
 def buscar_partidas_estacao(codigo_estacao: str) -> dict | None:
     parametros = urlencode({
@@ -106,6 +108,7 @@ def buscar_partidas_estacao(codigo_estacao: str) -> dict | None:
     except (HTTPError, URLError, TimeoutError, json.JSONDecodeError) as erro:
         print("Não foi possível consultar as partidas:", erro)
         return None
+
 
 def buscar_status_linhas() -> dict | None:
     chave = "ta_y-VXKq-FdxRdjTB9IbAIeM0ZU88q7qvS"
@@ -134,6 +137,7 @@ def buscar_status_linhas() -> dict | None:
     except (URLError, TimeoutError, json.JSONDecodeError) as erro:
         print("Erro ao consultar status:", erro)
         return None
+
 
 def buscar_estacao_api(nome: str) -> list | None:
     parametros = urlencode({

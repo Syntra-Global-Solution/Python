@@ -1,6 +1,9 @@
 #  Funções básicas
+
+
 def continuar() -> None:
     input("Pressione ENTER para continuar ...")
+
 
 def valueerror() -> None:
     print(f"""
@@ -8,6 +11,7 @@ def valueerror() -> None:
 Digite um número!
 {30 * "-"}
 """)
+
 
 def except_geral() -> None:
     print(f"""
@@ -17,6 +21,7 @@ Ocorreu um erro! Tente novamente
 """)
 
 # Menus e Submenus
+
 
 def exibir_menu() -> None:
     print(f"""
@@ -29,6 +34,7 @@ def exibir_menu() -> None:
 3 - Relato de ocorrências
     """)
 
+
 def submenu_trajetos() -> None:
     print(f"""
 {10 * "="} TRAJETOS {10 * "="}\n
@@ -38,6 +44,7 @@ def submenu_trajetos() -> None:
     """)
 
 # Solicitação de informações
+
 
 def solicitar_local(mensagem: str) -> str:
     while True:

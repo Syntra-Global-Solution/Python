@@ -4,6 +4,8 @@ from zoneinfo import ZoneInfo
 import os
 
 #  Submenu das linhas
+
+
 def sub_linhas() -> None:
     print(f"""
 {10 * "="} INFORMAÇÕES DE LINHAS {10 * "="}
@@ -12,6 +14,7 @@ def sub_linhas() -> None:
 2 - Trem
 3 - Monotrilho
     """)
+
 
 def menu_metro() -> None:
     print(f"""
@@ -23,6 +26,7 @@ def menu_metro() -> None:
 5 - Linha 5-Lilás
 6 - Linha 6-Laranja
         """)
+
 
 def menu_trem() -> None:
     print(f"""
@@ -36,12 +40,14 @@ def menu_trem() -> None:
 13 - Linha 13-Jade
         """)
 
+
 def menu_monotrilho() -> None:
     print(f"""
 {10 * "="} MONOTRILHO {10 * "="}
 15 - Linha 15-Prata
 17 - Linha 17-Ouro
             """)
+
 
 def consultar_informacoes(numero_linha: int) -> None:
     nome_estacao = input("Digite sua estação: ").strip()
@@ -99,6 +105,7 @@ def consultar_informacoes(numero_linha: int) -> None:
         exibir_partidas(dados, numero_linha, sentido)
         exibir_status_linha(numero_linha)
 
+
 def escolher_sentido(dados: dict, numero_linha: int) -> str | None:
     sentidos = []
 
@@ -131,6 +138,7 @@ def escolher_sentido(dados: dict, numero_linha: int) -> str | None:
 
         except ValueError:
             print("Digite um número válido.")
+
 
 def exibir_partidas(dados: dict, numero_linha: int, sentido: str) -> None:
     partidas = []
@@ -168,6 +176,7 @@ def exibir_partidas(dados: dict, numero_linha: int, sentido: str) -> None:
 
         print("\nHorário:", horario_sp.strftime("%H:%M"))
         print("Faltam aproximadamente:", minutos, "minutos")
+
 
 def exibir_status_linha(numero_linha: int) -> None:
     dados_status = buscar_status_linhas()

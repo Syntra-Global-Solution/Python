@@ -5,6 +5,8 @@ import subalgoritmos as sub
 import trajetos
 import favoritos
 import linhas
+import ocorrencias
+
 
 while True:
     try:
@@ -41,6 +43,7 @@ while True:
                 except:
                     sub.except_geral()
                     sub.continuar()
+
             case 2:
                 # Informações de linhas
                 try:
@@ -61,6 +64,7 @@ while True:
                             except:
                                 sub.except_geral()
                                 sub.continuar()
+
                         case 2:
                             linhas.menu_trem()
 
@@ -75,6 +79,7 @@ while True:
                             except:
                                 sub.except_geral()
                                 sub.continuar()
+
                         case 3:
                             linhas.menu_monotrilho()
                             try:
@@ -88,6 +93,7 @@ while True:
                             except:
                                 sub.except_geral()
                                 sub.continuar()
+
                         case _:
                             print("Digite um valor válido!")
                             sub.continuar()
@@ -98,10 +104,98 @@ while True:
                 except:
                     sub.except_geral()
                     sub.continuar()
+
             case 3:
                 # Relato de ocorrências
-                pass
+                ocorrencias.exibir_menu_ocorrencias()
+
+                try:
+                    opcao_ocorrencias = int(input("Escolha: "))
+
+                    match opcao_ocorrencias:
+                        case 1:
+                            ocorrencias.menu_informar()
+
+                            try:
+                                opcao_ocorrencia = int(input("Escolha: "))
+
+                                if opcao_ocorrencia == 1:
+                                    ocorrencias.opcao_metro()
+
+                                elif opcao_ocorrencia == 2:
+                                    ocorrencias.opcao_trem()
+
+                                elif opcao_ocorrencia == 3:
+                                    ocorrencias.opcao_monotrilho()
+
+                                else:
+                                    print("Digite um valor válido!")
+
+                            except ValueError:
+                                sub.valueerror()
+                            except:
+                                sub.except_geral()
+
+                        case 2:
+                            ocorrencias.menu_informar()
+
+                            try:
+                                opcao_ocorrencia = int(input("Escolha: "))
+
+                                if opcao_ocorrencia == 1:
+                                    ocorrencias.menu_metro()
+
+                                    try:
+                                        escolha = int(input("Escolha: "))
+                                        ocorrencias.listar_ocorrencias(escolha)
+
+                                    except ValueError:
+                                        sub.valueerror()
+                                    except:
+                                        sub.except_geral()
+
+                                elif opcao_ocorrencia == 2:
+                                    ocorrencias.menu_trem()
+
+                                    try:
+                                        escolha = int(input("Escolha: "))
+                                        ocorrencias.listar_ocorrencias(escolha)
+
+                                    except ValueError:
+                                        sub.valueerror()
+                                    except:
+                                        sub.except_geral()
+
+                                elif opcao_ocorrencia == 3:
+                                    ocorrencias.menu_monotrilho()
+
+                                    try:
+                                        escolha = int(input("Escolha: "))
+                                        ocorrencias.listar_ocorrencias(escolha)
+
+                                    except ValueError:
+                                        sub.valueerror()
+                                    except:
+                                        sub.except_geral()
+
+                                else:
+                                    print("Digite um valor válido!")
+
+                            except ValueError:
+                                sub.valueerror()
+                            except:
+                                sub.except_geral()
+
+                        case _:
+                            print("Opção inválida!")
+
+                except ValueError:
+                    sub.valueerror()
+                except:
+                    sub.except_geral()
+
                 sub.continuar()
+
     except ValueError:
         sub.valueerror()
         sub.continuar()
